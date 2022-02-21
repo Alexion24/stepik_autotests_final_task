@@ -13,10 +13,10 @@ class ProductPage(BasePage):
 
     def should_be_equal_names(self):
         added_product_name = self.browser.find_element(*ProductPageLocators.added_product_name).text
-        product_name_in_basket = self.browser.find_element(*ProductPageLocators.product_name_in_basket).text
-        assert added_product_name in product_name_in_basket, 'Products not equal'
+        product_name_in_basket = self.browser.find_elements(*ProductPageLocators.product_name_in_basket)[0].text
+        assert added_product_name == product_name_in_basket, 'Products not equal'
 
     def should_be_equal_prices(self):
         added_product_price = self.browser.find_element(*ProductPageLocators.added_product_price).text
         product_price_in_basket = self.browser.find_element(*ProductPageLocators.product_price_in_basket).text
-        assert added_product_price in product_price_in_basket, 'Products prices not equal'
+        assert added_product_price == product_price_in_basket, 'Products prices not equal'
