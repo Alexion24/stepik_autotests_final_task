@@ -3,7 +3,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import math
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from .locators import BasePageLocators
+from .locators import BasePageLocators, ProductPageLocators
 
 
 class BasePage:
@@ -15,8 +15,16 @@ class BasePage:
     def open(self):
         self.browser.get(self.url)
 
+    def add_to_basket(self):
+        add_to_basket = self.browser.find_element(*ProductPageLocators.add_to_basket_button)
+        add_to_basket.click()
+
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def go_to_basket_page(self):
+        link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
         link.click()
 
     def is_element_present(self, how, what):
