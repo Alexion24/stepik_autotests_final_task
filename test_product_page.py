@@ -45,8 +45,6 @@ def test_guest_can_add_product_to_basket(browser):
     page.add_to_basket()
     page.should_be_equal_names()
     page.should_be_equal_prices()
-    page.should_not_be_success_message()
-    page.should_disapear_of_success_message()
 
 
 def test_guest_cant_see_success_message(browser):
